@@ -1,6 +1,7 @@
 // src/app/explore/page.tsx
 import Image from "next/image";
-import { UNIVERSITIES } from "@/data/universities"; // Clean alias import
+import { UNIVERSITIES } from "@/data/universities";
+import Link from "next/link";
 
 export default function ExploreUnis() {
   return (
@@ -16,6 +17,7 @@ export default function ExploreUnis() {
       <div className="w-full max-w-6xl mt-12 px-2">
         <div className="flex overflow-x-auto gap-6 pb-6 mt-10 no-scrollbar scroll-smooth snap-x snap-mandatory">
           {UNIVERSITIES.map((uni) => (
+            <Link href={`/university/${uni.id}`} key={uni.id}>
             <div
               key={uni.id}
               className="group relative h-48 w-72 sm:w-80 shrink-0 rounded-xl overflow-hidden shadow-md dark:shadow-black/40 border border-zinc-200/50 dark:border-zinc-800/50 cursor-pointer snap-start"
@@ -38,6 +40,7 @@ export default function ExploreUnis() {
                 </h4>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>

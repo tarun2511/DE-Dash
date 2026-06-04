@@ -9,7 +9,7 @@ export interface University {
 
 export const UNIVERSITIES: University[] = [
   {
-    id: "tum",
+    id: "1",
     name: "TU Munich",
     city: "Munich",
     imageSrc: "/tum.jpeg",
@@ -17,7 +17,7 @@ export const UNIVERSITIES: University[] = [
     slug: "tu-munich",
   },
   {
-    id: "humboldt",
+    id: "2",
     name: "Humboldt Uni zu Berlin",
     city: "Berlin",
     imageSrc: "/uni2.jpg",
