@@ -11,7 +11,7 @@ export async function loginAction(formData: FormData) {
     const supabase = await createClient();
 
     const { data: user, error } = await supabase
-    .from('custom_users')
+    .from('users')
     .select('*')
     .eq('email', email)
     .single(); 

@@ -29,7 +29,7 @@ export default function NavBar() {
           <Link href={"/login"} className="font-bold">Login</Link>
         </li>
          <li>
-          <Link href={"/about"} className="font-bold bg-[#ff7614] p-2 rounded-xl text-white">Signup</Link>
+          <Link href={"/signup"} className="font-bold bg-[#ff7614] p-2 rounded-xl text-white">Signup</Link>
         </li>
       </ul>
     </nav>
