@@ -12,6 +12,7 @@ export default function login() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const router = useRouter(); // 2. Initialize router
+    const [success, setSuccess] = useState(false);
     
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -30,8 +31,12 @@ export default function login() {
                 setLoading(false); // Stop loading on failure so user can try again
             } else {
                 // 3. SUCCESS: Refresh server state and redirect on client
-                router.refresh(); // Syncs session cookie state with Server Components
-                router.push('/'); // Navigates client-side
+                setSuccess(true); // Show success message
+                setTimeout(() => {
+                    router.refresh(); // Syncs session cookie state with Server Components
+                    router.push('/'); // Navigates client-side
+                    setSuccess(false); // Hide success message after 2 seconds
+                }, 2000);
             }
         } catch (err) {
             setError('Something went wrong. Please try again.');
@@ -41,7 +46,12 @@ export default function login() {
 
     return (
         <>
-            <NavBar />
+            <NavBar isLoggedIn={false} />
+            {success && (
+                <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50">
+                    Login successful! Redirecting...
+                </div>
+            )}
             <div className="flex items-center justify-center min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-100">
                 <form onSubmit={handleSubmit} className="p-6 rounded-2xl shadow-xl w-full max-w-sm bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-900">
                     <h2 className="text-2xl font-bold mb-4">Login</h2>
